@@ -1,0 +1,1230 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mouna Kholassi - Data Analyst</title>
+    <meta name="description" content="Portfolio de Mouna Kholassi - Data Analyst spécialisée en IA, Big Data et Business Intelligence">
+    
+    <!-- Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            line-height: 1.6;
+            color: #333;
+            overflow-x: hidden;
+        }
+
+        /* Vanta.js Background */
+        #vanta-bg {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+        }
+
+        /* Navigation */
+        nav {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            padding: 1rem 2rem;
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+            z-index: 1000;
+            transition: all 0.3s ease;
+        }
+
+        nav.scrolled {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(20px);
+        }
+
+        nav ul {
+            list-style: none;
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+        }
+
+        nav a {
+            text-decoration: none;
+            color: #fff;
+            font-weight: 500;
+            transition: all 0.3s ease;
+            padding: 0.5rem 1rem;
+            border-radius: 25px;
+        }
+
+        nav.scrolled a {
+            color: #333;
+        }
+
+        nav a:hover {
+            background: rgba(76, 175, 80, 0.2);
+            transform: translateY(-2px);
+        }
+
+        /* Sections */
+        section {
+            min-height: 100vh;
+            padding: 2rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+        }
+
+        .container {
+            max-width: 1200px;
+            width: 100%;
+            margin: 0 auto;
+        }
+
+        /* Hero Section */
+        .hero {
+            text-align: center;
+            color: white;
+            background: linear-gradient(135deg, rgba(76, 175, 80, 0.1), rgba(33, 150, 243, 0.1));
+        }
+
+        .hero h1 {
+            font-size: 3.5rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+            animation: fadeInUp 1s ease-out;
+        }
+
+        .hero .subtitle {
+            font-size: 1.5rem;
+            font-weight: 300;
+            margin-bottom: 2rem;
+            opacity: 0.9;
+            animation: fadeInUp 1s ease-out 0.3s both;
+        }
+
+        .hero .description {
+            font-size: 1.2rem;
+            max-width: 600px;
+            margin: 0 auto 3rem;
+            opacity: 0.8;
+            animation: fadeInUp 1s ease-out 0.6s both;
+        }
+
+        .cta-buttons {
+            display: flex;
+            gap: 1.5rem;
+            justify-content: center;
+            flex-wrap: wrap;
+            animation: fadeInUp 1s ease-out 0.9s both;
+        }
+
+        .btn {
+            padding: 1rem 2rem;
+            border: none;
+            border-radius: 50px;
+            font-size: 1.1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .btn-primary {
+            background: linear-gradient(135deg, #4CAF50, #45a049);
+            color: white;
+            box-shadow: 0 10px 30px rgba(76, 175, 80, 0.3);
+        }
+
+        .btn-secondary {
+            background: rgba(255, 255, 255, 0.2);
+            color: white;
+            border: 2px solid rgba(255, 255, 255, 0.3);
+            backdrop-filter: blur(10px);
+        }
+
+        .btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.2);
+        }
+
+        /* About Section */
+        .about {
+            background: rgba(255, 255, 255, 0.95);
+            color: #333;
+        }
+
+        .about-content {
+            display: grid;
+            grid-template-columns: 1fr 2fr;
+            gap: 4rem;
+            align-items: center;
+        }
+
+        .about-text h2 {
+            font-size: 2.5rem;
+            margin-bottom: 1.5rem;
+            color: #2196F3;
+        }
+
+        .about-text p {
+            font-size: 1.1rem;
+            margin-bottom: 1.5rem;
+            line-height: 1.8;
+        }
+
+        .stats {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .stat-item {
+            text-align: center;
+            padding: 1.5rem;
+            background: rgba(33, 150, 243, 0.1);
+            border-radius: 15px;
+        }
+
+        .stat-number {
+            font-size: 2rem;
+            font-weight: 700;
+            color: #2196F3;
+            display: block;
+        }
+
+        .stat-label {
+            font-size: 0.9rem;
+            color: #666;
+        }
+
+        /* Skills Section */
+        .skills {
+            background: linear-gradient(135deg, rgba(76, 175, 80, 0.05), rgba(33, 150, 243, 0.05));
+            color: #333;
+        }
+
+        .skills h2 {
+            text-align: center;
+            font-size: 2.5rem;
+            margin-bottom: 3rem;
+            color: #2196F3;
+        }
+
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+
+        .skill-category {
+            background: rgba(255, 255, 255, 0.9);
+            padding: 2rem;
+            border-radius: 20px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            transition: all 0.3s ease;
+        }
+
+        .skill-category:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.15);
+        }
+
+        .skill-category h3 {
+            color: #4CAF50;
+            margin-bottom: 1rem;
+            font-size: 1.3rem;
+        }
+
+        .skill-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+        }
+
+        .skill-tag {
+            background: linear-gradient(135deg, #4CAF50, #45a049);
+            color: white;
+            padding: 0.5rem 1rem;
+            border-radius: 25px;
+            font-size: 0.9rem;
+            font-weight: 500;
+        }
+
+        /* Projects Section */
+        .projects {
+            background: rgba(255, 255, 255, 0.95);
+            color: #333;
+        }
+
+        .projects h2 {
+            text-align: center;
+            font-size: 2.5rem;
+            margin-bottom: 3rem;
+            color: #2196F3;
+        }
+
+        .projects-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+            gap: 2rem;
+        }
+
+        .project-card {
+            background: white;
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.1);
+            transition: all 0.3s ease;
+        }
+
+        .project-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 25px 60px rgba(0, 0, 0, 0.15);
+        }
+
+        .project-header {
+            padding: 2rem 2rem 1rem;
+        }
+
+        .project-title {
+            font-size: 1.5rem;
+            font-weight: 600;
+            margin-bottom: 1rem;
+            color: #333;
+        }
+
+        .project-description {
+            color: #666;
+            line-height: 1.6;
+            margin-bottom: 1.5rem;
+        }
+
+        .project-tech {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .tech-tag {
+            background: rgba(33, 150, 243, 0.1);
+            color: #2196F3;
+            padding: 0.3rem 0.8rem;
+            border-radius: 15px;
+            font-size: 0.85rem;
+            font-weight: 500;
+        }
+
+        .project-links {
+            display: flex;
+            gap: 1rem;
+            padding: 0 2rem 2rem;
+        }
+
+        .project-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 0.8rem 1.5rem;
+            background: linear-gradient(135deg, #4CAF50, #45a049);
+            color: white;
+            text-decoration: none;
+            border-radius: 25px;
+            font-weight: 500;
+            transition: all 0.3s ease;
+        }
+
+        .project-link:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(76, 175, 80, 0.4);
+        }
+
+        /* Contact Section */
+        .contact {
+            background: linear-gradient(135deg, rgba(33, 150, 243, 0.1), rgba(76, 175, 80, 0.1));
+            color: #333;
+            text-align: center;
+        }
+
+        .contact h2 {
+            font-size: 2.5rem;
+            margin-bottom: 2rem;
+            color: #2196F3;
+        }
+
+        .contact-info {
+            display: flex;
+            justify-content: center;
+            gap: 3rem;
+            flex-wrap: wrap;
+            margin-bottom: 3rem;
+        }
+
+        .contact-item {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .contact-icon {
+            width: 60px;
+            height: 60px;
+            background: linear-gradient(135deg, #4CAF50, #45a049);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            color: white;
+        }
+
+        .contact-details h3 {
+            margin-bottom: 0.5rem;
+            color: #333;
+        }
+
+        .contact-details p, .contact-details a {
+            color: #666;
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        .contact-details a:hover {
+            color: #4CAF50;
+        }
+
+        .social-links {
+            display: flex;
+            justify-content: center;
+            gap: 1.5rem;
+        }
+
+        .social-link {
+            width: 50px;
+            height: 50px;
+            background: rgba(255, 255, 255, 0.2);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #333;
+            font-size: 1.2rem;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            backdrop-filter: blur(10px);
+        }
+
+        .social-link:hover {
+            background: #4CAF50;
+            color: white;
+            transform: translateY(-3px);
+        }
+
+        /* Animations */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .fade-in {
+            opacity: 0;
+            transform: translateY(50px);
+            transition: all 1s ease;
+        }
+
+        .fade-in.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+
+            .hero .subtitle {
+                font-size: 1.2rem;
+            }
+
+            .about-content {
+                grid-template-columns: 1fr;
+                text-align: center;
+            }
+
+            .stats {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .projects-grid {
+                grid-template-columns: 1fr;
+            }
+
+            nav ul {
+                flex-direction: column;
+                gap: 1rem;
+            }
+
+            section {
+                padding: 1rem;
+            }
+
+            .cta-buttons {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .contact-info {
+                flex-direction: column;
+                gap: 2rem;
+            }
+        }
+
+        /* Scroll indicator */
+        .scroll-indicator {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 4px;
+            background: rgba(255, 255, 255, 0.2);
+            z-index: 1001;
+        }
+
+        .scroll-progress {
+            height: 100%;
+            background: linear-gradient(90deg, #4CAF50, #2196F3);
+            width: 0%;
+            transition: width 0.3s ease;
+        }
+    </style>
+</head>
+<body>
+    <!-- Vanta.js Background -->
+    <div id="vanta-bg"></div>
+
+    <!-- Scroll Progress Bar -->
+    <div class="scroll-indicator">
+        <div class="scroll-progress" id="scrollProgress"></div>
+    </div>
+
+    <!-- Navigation -->
+    <nav id="navbar">
+        <ul>
+            <li><a href="#home">Accueil</a></li>
+            <li><a href="#about">À propos</a></li>
+            <li><a href="#skills">Compétences</a></li>
+            <li><a href="#projects">Projets</a></li>
+            <li><a href="#contact">Contact</a></li>
+        </ul>
+    </nav>
+
+    <!-- Hero Section -->
+    <section id="home" class="hero">
+        <div class="container">
+            <h1>Mouna Kholassi</h1>
+            <p class="subtitle">Business / Data Analyst</p>
+            <p class="description">
+                Spécialisée en Intelligence Artificielle, Big Data et Business Intelligence avec 6 ans d'expérience. 
+                Double Master en Dev IA & Big Data et Data Analytics & Business Manager.
+            </p>
+            <div class="cta-buttons">
+                <a href="#projects" class="btn btn-primary">
+                    <i class="fas fa-chart-bar"></i>
+                    Voir mes projets
+                </a>
+                <a href="mailto:mounakholassi@gmail.com" class="btn btn-secondary">
+                    <i class="fas fa-envelope"></i>
+                    Me contacter
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="about">
+        <div class="container">
+            <div class="about-content fade-in">
+                <div class="stats">
+                    <div class="stat-item">
+                        <span class="stat-number">6+</span>
+                        <span class="stat-label">Années d'expérience</span>
+                    </div>
+                    <div class="stat-item">
+                        <span class="stat-number">200K+</span>
+                        <span class="stat-label">Données analysées</span>
+                    </div>
+                    <div class="stat-item">
+                        <span class="stat-number">3</span>
+                        <span class="stat-label">Projets majeurs</span>
+                    </div>
+                </div>
+                <div class="about-text">
+                    <h2>À propos de moi</h2>
+                    <p>
+                        Forte de 6 ans d'expérience en tant qu'ingénieur informatique, j'ai développé une expertise approfondie 
+                        en analyse de données, extraction, nettoyage et traitement des données, ainsi qu'en création de rapports 
+                        et tableaux de bord interactifs.
+                    </p>
+                    <p>
+                        Actuellement en alternance chez <strong>Boehringer Ingelheim</strong> en tant que Chargée de Projet 
+                        Expérience Client Omnicanale, je gère des projets digitaux complexes et analyse les performances 
+                        des campagnes multi-canaux.
+                    </p>
+                    <p>
+                        Ma double formation en <strong>Dev IA & Big Data (IPSSI Paris)</strong> et 
+                        <strong>Data Analytics & Business Manager (INSEEC Paris)</strong> me permet d'allier 
+                        compétences techniques et vision business.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Skills Section -->
+    <section id="skills" class="skills">
+        <div class="container">
+            <h2 class="fade-in">Mes Compétences</h2>
+            <div class="skills-grid">
+                <div class="skill-category fade-in">
+                    <h3><i class="fas fa-code"></i> Programmation & Web</h3>
+                    <div class="skill-tags">
+                        <span class="skill-tag">Python</span>
+                        <span class="skill-tag">SQL</span>
+                        <span class="skill-tag">JavaScript</span>
+                        <span class="skill-tag">HTML/CSS</span>
+                        <span class="skill-tag">R</span>
+                        <span class="skill-tag">C#/C++</span>
+                    </div>
+                </div>
+                
+                <div class="skill-category fade-in">
+                    <h3><i class="fas fa-database"></i> Bases de Données & Big Data</h3>
+                    <div class="skill-tags">
+                        <span class="skill-tag">MySQL</span>
+                        <span class="skill-tag">MongoDB</span>
+                        <span class="skill-tag">Hadoop</span>
+                        <span class="skill-tag">Spark</span>
+                        <span class="skill-tag">PostgreSQL</span>
+                    </div>
+                </div>
+                
+                <div class="skill-category fade-in">
+                    <h3><i class="fas fa-chart-line"></i> Data Visualisation</h3>
+                    <div class="skill-tags">
+                        <span class="skill-tag">Tableau</span>
+                        <span class="skill-tag">Power BI</span>
+                        <span class="skill-tag">Looker</span>
+                        <span class="skill-tag">Plotly</span>
+                        <span class="skill-tag">Dash</span>
+                    </div>
+                </div>
+                
+                <div class="skill-category fade-in">
+                    <h3><i class="fas fa-brain"></i> IA & Machine Learning</h3>
+                    <div class="skill-tags">
+                        <span class="skill-tag">Scikit-learn</span>
+                        <span class="skill-tag">TensorFlow</span>
+                        <span class="skill-tag">YOLO</span>
+                        <span class="skill-tag">OpenCV</span>
+                        <span class="skill-tag">Hugging Face</span>
+                    </div>
+                </div>
+                
+                <div class="skill-category fade-in">
+                    <h3><i class="fas fa-tools"></i> Outils & Frameworks</h3>
+                    <div class="skill-tags">
+                        <span class="skill-tag">Flask</span>
+                        <span class="skill-tag">Streamlit</span>
+                        <span class="skill-tag">React</span>
+                        <span class="skill-tag">Shopify</span>
+                        <span class="skill-tag">WordPress</span>
+                    </div>
+                </div>
+                
+                <div class="skill-category fade-in">
+                    <h3><i class="fas fa-tasks"></i> Gestion de Projet</h3>
+                    <div class="skill-tags">
+                        <span class="skill-tag">Scrum/Agile</span>
+                        <span class="skill-tag">Jira</span>
+                        <span class="skill-tag">Trello</span>
+                        <span class="skill-tag">Notion</span>
+                        <span class="skill-tag">Salesforce</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Projects Section -->
+    <section id="projects" class="projects">
+        <div class="container">
+            <h2 class="fade-in">Mes Projets</h2>
+            <div class="projects-grid">
+                
+                <!-- Project 1: SOGOOD -->
+                <div class="project-card fade-in">
+                    <div class="project-header">
+                        <h3 class="project-title">🥗 SOGOOD - Analyse Nutritionnelle Big Data</h3>
+                        <p class="project-description">
+                            Analyse de la qualité nutritionnelle de 200k+ produits alimentaires français avec des 
+                            technologies Big Data et Machine Learning sur données OpenFoodFacts. Interface Flask responsive 
+                            avec 3 dashboards Power BI analytics.
+                        </p>
+                        <div class="project-tech">
+                            <span class="tech-tag">PySpark</span>
+                            <span class="tech-tag">Flask</span>
+                            <span class="tech-tag">Power BI</span>
+                            <span class="tech-tag">PostgreSQL</span>
+                            <span class="tech-tag">Scikit-learn</span>
+                            <span class="tech-tag">Plotly</span>
+                        </div>
+                    </div>
+                    <div class="project-links">
+                        <a href="https://github.com/Mouna-kenza/sogood-nutritional-analysis" target="_blank" class="project-link">
+                            <i class="fab fa-github"></i>
+                            GitHub
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Project 2: SCAN TRAD -->
+                <div class="project-card fade-in">
+                    <div class="project-header">
+                        <h3 class="project-title">📖 SCAN TRAD - Traduction Automatique de Manga IA</h3>
+                        <p class="project-description">
+                            Application de traduction automatique de pages manga/manhwa utilisant l'Intelligence Artificielle 
+                            et Computer Vision. Détection de bulles de texte avec YOLO, OCR et traduction automatique 
+                            avec modèles Transformer.
+                        </p>
+                        <div class="project-tech">
+                            <span class="tech-tag">YOLO</span>
+                            <span class="tech-tag">OpenCV</span>
+                            <span class="tech-tag">Tesseract OCR</span>
+                            <span class="tech-tag">Hugging Face</span>
+                            <span class="tech-tag">Streamlit</span>
+                            <span class="tech-tag">Computer Vision</span>
+                        </div>
+                    </div>
+                    <div class="project-links">
+                        <a href="https://github.com/Myckadev/scantrad" target="_blank" class="project-link">
+                            <i class="fab fa-github"></i>
+                            GitHub
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Project 3: Credit Scoring -->
+                <div class="project-card fade-in">
+                    <div class="project-header">
+                        <h3 class="project-title">💳 Credit Scoring & Dashboard IA - Home Credit</h3>
+                        <p class="project-description">
+                            Système complet de credit scoring pour une société financière avec modèle ML, API de prédiction 
+                            et dashboard interactif pour la transparence client. Optimisation via matrice de coût métier 
+                            et déploiement CI/CD Azure DevOps.
+                        </p>
+                        <div class="project-tech">
+                            <span class="tech-tag">Machine Learning</span>
+                            <span class="tech-tag">Flask/Django</span>
+                            <span class="tech-tag">SMOTE</span>
+                            <span class="tech-tag">Hyperopt</span>
+                            <span class="tech-tag">Azure DevOps</span>
+                            <span class="tech-tag">API REST</span>
+                        </div>
+                    </div>
+                    <div class="project-links">
+                        <a href="https://github.com/Mouna-kenza/Home-credit-ipssi" target="_blank" class="project-link">
+                            <i class="fab fa-github"></i>
+                            GitHub
+                        </a>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="contact">
+        <div class="container">
+            <h2 class="fade-in">Contactez-moi</h2>
+            <div class="contact-info fade-in">
+                <div class="contact-item">
+                    <div class="contact-icon">
+                        <i class="fas fa-envelope"></i>
+                    </div>
+                    <div class="contact-details">
+                        <h3>Email</h3>
+                        <a href="mailto:mounakholassi@gmail.com">mounakholassi@gmail.com</a>
+                    </div>
+                </div>
+                
+                <div class="contact-item">
+                    <div class="contact-icon">
+                        <i class="fas fa-phone"></i>
+                    </div>
+                    <div class="contact-details">
+                        <h3>Téléphone</h3>
+                        <p>+33 7 53 34 30 10</p>
+                    </div>
+                </div>
+                
+                <div class="contact-item">
+                    <div class="contact-icon">
+                        <i class="fas fa-map-marker-alt"></i>
+                    </div>
+                    <div class="contact-details">
+                        <h3>Localisation</h3>
+                        <p>Paris, France</p>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="social-links fade-in">
+                <a href="https://linkedin.com/in/mouna-kholassi" target="_blank" class="social-link">
+                    <i class="fab fa-linkedin-in"></i>
+                </a>
+                <a href="https://github.com/Mouna-kenza" target="_blank" class="social-link">
+                    <i class="fab fa-github"></i>
+                </a>
+                <a href="mailto:mounakholassi@gmail.com" class="social-link">
+                    <i class="fas fa-envelope"></i>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Scripts -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/vanta/0.5.24/vanta.net.min.js"></script>
+    
+    <script>
+        // Vanta.js Background
+        VANTA.NET({
+            el: "#vanta-bg",
+            mouseControls: true,
+            touchControls: true,
+            gyroControls: false,
+            minHeight: 200.00,
+            minWidth: 200.00,
+            scale: 1.00,
+            scaleMobile: 1.00,
+            color: 0x4CAF50,
+            backgroundColor: 0x1a1a2e,
+            points: 8.00,
+            maxDistance: 23.00,
+            spacing: 17.00
+        });
+
+        // Navbar scroll effect
+        window.addEventListener('scroll', () => {
+            const navbar = document.getElementById('navbar');
+            const scrollProgress = document.getElementById('scrollProgress');
+            const scrolled = window.pageYOffset;
+            const maxScroll = document.documentElement.scrollHeight - window.innerHeight;
+            const scrollPercentage = (scrolled / maxScroll) * 100;
+            
+            scrollProgress.style.width = scrollPercentage + '%';
+            
+            if (scrolled > 50) {
+                navbar.classList.add('scrolled');
+            } else {
+                navbar.classList.remove('scrolled');
+            }
+        });
+
+        // Smooth scrolling for navigation links
+        document.querySelectorAll('nav a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+        // Fade in animations on scroll
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                }
+            });
+        }, observerOptions);
+
+        // Observe all fade-in elements
+        document.querySelectorAll('.fade-in').forEach(el => {
+            observer.observe(el);
+        });
+
+        // Dynamic typing effect for hero section
+        function typeWriter(element, text, speed = 100) {
+            let i = 0;
+            element.innerHTML = '';
+            
+            function type() {
+                if (i < text.length) {
+                    element.innerHTML += text.charAt(i);
+                    i++;
+                    setTimeout(type, speed);
+                }
+            }
+            
+            type();
+        }
+
+        // Initialize typing effect after page load
+        window.addEventListener('load', () => {
+            setTimeout(() => {
+                const subtitle = document.querySelector('.hero .subtitle');
+                if (subtitle) {
+                    const originalText = subtitle.textContent;
+                    typeWriter(subtitle, originalText, 80);
+                }
+            }, 1500);
+        });
+
+        // Add hover effects to project cards
+        document.querySelectorAll('.project-card').forEach(card => {
+            card.addEventListener('mouseenter', function() {
+                this.style.transform = 'translateY(-15px) scale(1.02)';
+            });
+            
+            card.addEventListener('mouseleave', function() {
+                this.style.transform = 'translateY(-10px) scale(1)';
+            });
+        });
+
+        // Parallax effect for sections
+        window.addEventListener('scroll', () => {
+            const scrolled = window.pageYOffset;
+            const rate = scrolled * -0.5;
+            
+            // Apply parallax to vanta background
+            const vantaBg = document.getElementById('vanta-bg');
+            if (vantaBg) {
+                vantaBg.style.transform = `translateY(${rate}px)`;
+            }
+        });
+
+        // Add click animations to buttons
+        document.querySelectorAll('.btn, .project-link').forEach(button => {
+            button.addEventListener('click', function(e) {
+                let ripple = document.createElement('span');
+                let rect = this.getBoundingClientRect();
+                let size = Math.max(rect.width, rect.height);
+                let x = e.clientX - rect.left - size / 2;
+                let y = e.clientY - rect.top - size / 2;
+                
+                ripple.style.cssText = `
+                    position: absolute;
+                    border-radius: 50%;
+                    background: rgba(255, 255, 255, 0.6);
+                    transform: scale(0);
+                    animation: ripple 0.6s linear;
+                    width: ${size}px;
+                    height: ${size}px;
+                    left: ${x}px;
+                    top: ${y}px;
+                `;
+                
+                this.style.position = 'relative';
+                this.style.overflow = 'hidden';
+                this.appendChild(ripple);
+                
+                setTimeout(() => {
+                    ripple.remove();
+                }, 600);
+            });
+        });
+
+        // Add CSS for ripple animation
+        const style = document.createElement('style');
+        style.textContent = `
+            @keyframes ripple {
+                to {
+                    transform: scale(4);
+                    opacity: 0;
+                }
+            }
+        `;
+        document.head.appendChild(style);
+
+        // Skills animation counter
+        function animateCounters() {
+            const counters = document.querySelectorAll('.stat-number');
+            
+            counters.forEach(counter => {
+                const target = parseInt(counter.textContent.replace(/[^0-9]/g, ''));
+                let current = 0;
+                const increment = target / 50;
+                const suffix = counter.textContent.replace(/[0-9]/g, '');
+                
+                const timer = setInterval(() => {
+                    current += increment;
+                    if (current >= target) {
+                        current = target;
+                        clearInterval(timer);
+                    }
+                    
+                    if (suffix.includes('K')) {
+                        counter.textContent = Math.floor(current) + 'K+';
+                    } else {
+                        counter.textContent = Math.floor(current) + suffix;
+                    }
+                }, 50);
+            });
+        }
+
+        // Trigger counter animation when about section is visible
+        const aboutSection = document.querySelector('.about');
+        if (aboutSection) {
+            const aboutObserver = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        animateCounters();
+                        aboutObserver.unobserve(entry.target);
+                    }
+                });
+            }, { threshold: 0.5 });
+            
+            aboutObserver.observe(aboutSection);
+        }
+
+        // Add loading screen
+        function createLoadingScreen() {
+            const loader = document.createElement('div');
+            loader.id = 'loader';
+            loader.innerHTML = `
+                <div class="loader-content">
+                    <div class="loader-spinner"></div>
+                    <h3>Mouna Kholassi</h3>
+                    <p>Data Analyst Portfolio</p>
+                </div>
+            `;
+            
+            const loaderStyle = document.createElement('style');
+            loaderStyle.textContent = `
+                #loader {
+                    position: fixed;
+                    top: 0;
+                    left: 0;
+                    width: 100%;
+                    height: 100%;
+                    background: linear-gradient(135deg, #1a1a2e, #16213e);
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+                    z-index: 10000;
+                    transition: opacity 0.5s ease, visibility 0.5s ease;
+                }
+                
+                .loader-content {
+                    text-align: center;
+                    color: white;
+                }
+                
+                .loader-spinner {
+                    width: 50px;
+                    height: 50px;
+                    border: 4px solid rgba(255, 255, 255, 0.3);
+                    border-top: 4px solid #4CAF50;
+                    border-radius: 50%;
+                    animation: spin 1s linear infinite;
+                    margin: 0 auto 20px;
+                }
+                
+                @keyframes spin {
+                    0% { transform: rotate(0deg); }
+                    100% { transform: rotate(360deg); }
+                }
+                
+                .loader-content h3 {
+                    font-size: 1.5rem;
+                    margin-bottom: 10px;
+                    font-weight: 600;
+                }
+                
+                .loader-content p {
+                    font-size: 1rem;
+                    opacity: 0.8;
+                }
+                
+                #loader.fade-out {
+                    opacity: 0;
+                    visibility: hidden;
+                }
+            `;
+            
+            document.head.appendChild(loaderStyle);
+            document.body.appendChild(loader);
+            
+            // Remove loader after page load
+            window.addEventListener('load', () => {
+                setTimeout(() => {
+                    loader.classList.add('fade-out');
+                    setTimeout(() => {
+                        loader.remove();
+                    }, 500);
+                }, 1500);
+            });
+        }
+
+        // Initialize loading screen
+        createLoadingScreen();
+
+        // Add scroll-to-top button
+        function createScrollToTop() {
+            const scrollBtn = document.createElement('button');
+            scrollBtn.innerHTML = '<i class="fas fa-arrow-up"></i>';
+            scrollBtn.className = 'scroll-to-top';
+            
+            const btnStyle = document.createElement('style');
+            btnStyle.textContent = `
+                .scroll-to-top {
+                    position: fixed;
+                    bottom: 30px;
+                    right: 30px;
+                    width: 50px;
+                    height: 50px;
+                    background: linear-gradient(135deg, #4CAF50, #45a049);
+                    color: white;
+                    border: none;
+                    border-radius: 50%;
+                    font-size: 1.2rem;
+                    cursor: pointer;
+                    opacity: 0;
+                    visibility: hidden;
+                    transition: all 0.3s ease;
+                    z-index: 1000;
+                    box-shadow: 0 5px 15px rgba(76, 175, 80, 0.4);
+                }
+                
+                .scroll-to-top.visible {
+                    opacity: 1;
+                    visibility: visible;
+                }
+                
+                .scroll-to-top:hover {
+                    transform: translateY(-3px);
+                    box-shadow: 0 8px 25px rgba(76, 175, 80, 0.6);
+                }
+            `;
+            
+            document.head.appendChild(btnStyle);
+            document.body.appendChild(scrollBtn);
+            
+            // Show/hide button based on scroll position
+            window.addEventListener('scroll', () => {
+                if (window.pageYOffset > 300) {
+                    scrollBtn.classList.add('visible');
+                } else {
+                    scrollBtn.classList.remove('visible');
+                }
+            });
+            
+            // Scroll to top functionality
+            scrollBtn.addEventListener('click', () => {
+                window.scrollTo({
+                    top: 0,
+                    behavior: 'smooth'
+                });
+            });
+        }
+
+        // Initialize scroll-to-top button
+        createScrollToTop();
+
+        // Add cursor trail effect
+        function createCursorTrail() {
+            const trail = [];
+            const trailLength = 20;
+            
+            for (let i = 0; i < trailLength; i++) {
+                const dot = document.createElement('div');
+                dot.className = 'cursor-dot';
+                dot.style.cssText = `
+                    position: fixed;
+                    width: 4px;
+                    height: 4px;
+                    background: #4CAF50;
+                    border-radius: 50%;
+                    pointer-events: none;
+                    z-index: 9999;
+                    opacity: ${1 - i / trailLength};
+                    transform: scale(${1 - i / trailLength});
+                    transition: all 0.1s ease;
+                `;
+                document.body.appendChild(dot);
+                trail.push(dot);
+            }
+            
+            let mouseX = 0, mouseY = 0;
+            
+            document.addEventListener('mousemove', (e) => {
+                mouseX = e.clientX;
+                mouseY = e.clientY;
+            });
+            
+            function animateTrail() {
+                let x = mouseX, y = mouseY;
+                
+                trail.forEach((dot, index) => {
+                    const nextDot = trail[index + 1] || trail[0];
+                    
+                    dot.style.left = x - 2 + 'px';
+                    dot.style.top = y - 2 + 'px';
+                    
+                    if (nextDot) {
+                        const rect = nextDot.getBoundingClientRect();
+                        x += (rect.left - x) * 0.3;
+                        y += (rect.top - y) * 0.3;
+                    }
+                });
+                
+                requestAnimationFrame(animateTrail);
+            }
+            
+            animateTrail();
+        }
+        
+        // Initialize cursor trail (only on desktop)
+        if (window.innerWidth > 768) {
+            createCursorTrail();
+        }
+    </script>
+</body>
+</html>
