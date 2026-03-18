@@ -183,8 +183,8 @@
     .flogo span{color:var(--accent);}
 
     /* Reveal */
-    .rv{opacity:0;transform:translateY(28px);transition:opacity .8s ease,transform .8s ease;}
-    .rv.on{opacity:1;transform:translateY(0);}
+    .rv{opacity:1;transform:none;}
+    .rv.on{opacity:1;transform:none;}
     .d1{transition-delay:.1s;}.d2{transition-delay:.2s;}.d3{transition-delay:.3s;}
 
     /* Responsive */
@@ -541,9 +541,8 @@
     });
   });
 
-  /* Reveal */
-  const obs=new IntersectionObserver(es=>{es.forEach(e=>{if(e.isIntersecting)e.target.classList.add('on');});},{threshold:.1,rootMargin:'0px 0px -40px 0px'});
-  document.querySelectorAll('.rv').forEach(el=>obs.observe(el));
+  /* Reveal — all visible immediately */
+  document.querySelectorAll('.rv').forEach(el=>el.classList.add('on'));
 
   /* Lightbox */
   const lb=document.getElementById('lb'),lbimg=document.getElementById('lbimg');
