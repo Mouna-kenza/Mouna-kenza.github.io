@@ -1,0 +1,553 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Mouna Kholassi — Data Analyst</title>
+  <meta name="description" content="Portfolio de Mouna Kholassi – Data Analyst spécialisée en CRM, BI, SQL, Python et pilotage de performance." />
+  <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Sans:wght@300;400;500;600&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+
+  <style>
+    :root {
+      --ink:    #0d0d0f;
+      --ink2:   #131318;
+      --ink3:   #1e1e28;
+      --paper:  #f5f3ee;
+      --paper2: #eeebe4;
+      --accent: #c8a96e;
+      --accent2:#a8875a;
+      --green:  #3d7a5e;
+      --blue:   #2c5f8a;
+      --muted:  #6e6c67;
+      --r-xl: 20px;
+      --r-lg: 14px;
+      --r-md: 9px;
+    }
+    *,*::before,*::after{margin:0;padding:0;box-sizing:border-box;}
+    html{scroll-behavior:smooth;}
+    body{font-family:'DM Sans',sans-serif;background:var(--ink);color:var(--paper);overflow-x:hidden;line-height:1.65;}
+
+    /* Cursor */
+    .cdot{width:6px;height:6px;background:var(--accent);border-radius:50%;position:fixed;top:0;left:0;pointer-events:none;z-index:9999;transition:transform .12s ease;}
+    .cring{width:34px;height:34px;border:1px solid rgba(200,169,110,.35);border-radius:50%;position:fixed;top:0;left:0;pointer-events:none;z-index:9998;}
+
+    /* Progress */
+    #sbar{position:fixed;top:0;left:0;width:0;height:2px;background:var(--accent);z-index:1000;transition:width .1s linear;}
+
+    /* Nav */
+    nav{position:fixed;top:0;width:100%;z-index:900;display:flex;align-items:center;justify-content:space-between;padding:1.5rem 3rem;transition:all .4s;}
+    nav.solid{background:rgba(13,13,15,.93);backdrop-filter:blur(18px);border-bottom:1px solid rgba(200,169,110,.1);padding:1rem 3rem;}
+    .nav-logo{font-family:'DM Serif Display',serif;font-size:1.15rem;color:var(--paper);text-decoration:none;}
+    .nav-logo span{color:var(--accent);}
+    .nav-links{display:flex;gap:2rem;list-style:none;}
+    .nav-links a{color:rgba(245,243,238,.5);text-decoration:none;font-size:.8rem;font-weight:500;letter-spacing:.08em;text-transform:uppercase;transition:color .2s;}
+    .nav-links a:hover{color:var(--accent);}
+    .nav-cta{display:inline-flex;align-items:center;gap:.5rem;background:var(--accent);color:var(--ink);font-weight:600;font-size:.82rem;padding:.6rem 1.15rem;border-radius:999px;text-decoration:none;transition:background .2s;}
+    .nav-cta:hover{background:var(--accent2);}
+
+    /* Hero */
+    #hero{min-height:100vh;display:grid;grid-template-columns:1fr 1fr;align-items:center;padding:7rem 3rem 4rem;position:relative;overflow:hidden;}
+    .hero-grid-bg{position:absolute;inset:0;z-index:0;background-image:linear-gradient(rgba(200,169,110,.04) 1px,transparent 1px),linear-gradient(90deg,rgba(200,169,110,.04) 1px,transparent 1px);background-size:60px 60px;}
+    .hero-glow{position:absolute;width:700px;height:700px;border-radius:50%;background:radial-gradient(circle,rgba(61,122,94,.13) 0%,transparent 70%);top:-200px;right:-200px;z-index:0;pointer-events:none;}
+    .hero-left{position:relative;z-index:1;}
+    .eyebrow{display:inline-flex;align-items:center;gap:.6rem;font-family:'DM Mono',monospace;font-size:.75rem;color:var(--accent);letter-spacing:.12em;text-transform:uppercase;margin-bottom:1.4rem;padding:.4rem .95rem;border:1px solid rgba(200,169,110,.28);border-radius:999px;}
+    .eyebrow::before{content:'';width:6px;height:6px;border-radius:50%;background:var(--accent);animation:pdot 2s ease-in-out infinite;}
+    @keyframes pdot{0%,100%{opacity:1;transform:scale(1);}50%{opacity:.35;transform:scale(.65);}}
+    .hero-h1{font-family:'DM Serif Display',serif;font-size:clamp(3.2rem,6vw,5.2rem);line-height:1.06;letter-spacing:-.02em;margin-bottom:.5rem;}
+    .hero-h1 em{font-style:italic;color:var(--accent);}
+    .hero-tag{font-size:1rem;color:rgba(245,243,238,.5);margin:1.1rem 0 2.2rem;max-width:430px;line-height:1.75;}
+    .hero-tag strong{color:rgba(245,243,238,.8);font-weight:500;}
+    .ctas{display:flex;gap:.8rem;flex-wrap:wrap;}
+    .btn-p{display:inline-flex;align-items:center;gap:.5rem;background:var(--accent);color:var(--ink);font-weight:600;font-size:.88rem;padding:.85rem 1.5rem;border-radius:999px;text-decoration:none;transition:background .2s,transform .2s;border:none;cursor:pointer;}
+    .btn-p:hover{background:var(--accent2);transform:translateY(-2px);}
+    .btn-g{display:inline-flex;align-items:center;gap:.5rem;background:transparent;color:var(--paper);font-weight:500;font-size:.88rem;padding:.85rem 1.5rem;border-radius:999px;text-decoration:none;border:1px solid rgba(245,243,238,.18);transition:border-color .2s,transform .2s;cursor:pointer;}
+    .btn-g:hover{border-color:rgba(245,243,238,.45);transform:translateY(-2px);}
+    .hstats{display:flex;gap:2.5rem;margin-top:2.8rem;padding-top:2rem;border-top:1px solid rgba(245,243,238,.08);}
+    .hstat-num{display:block;font-family:'DM Serif Display',serif;font-size:2.2rem;line-height:1;}
+    .hstat-lbl{font-size:.74rem;color:var(--muted);text-transform:uppercase;letter-spacing:.06em;margin-top:.3rem;}
+
+    /* Hero right card */
+    .hero-right{position:relative;z-index:1;display:flex;justify-content:center;align-items:center;}
+    .chart-card{background:rgba(255,255,255,.035);border:1px solid rgba(200,169,110,.14);border-radius:var(--r-xl);padding:1.8rem;width:100%;max-width:430px;position:relative;overflow:hidden;}
+    .chart-card::before{content:'';position:absolute;top:0;left:0;right:0;height:1px;background:linear-gradient(90deg,transparent,var(--accent),transparent);opacity:.45;}
+    .card-lbl{font-family:'DM Mono',monospace;font-size:.7rem;color:var(--accent);letter-spacing:.1em;text-transform:uppercase;margin-bottom:1.1rem;}
+    .bars{display:flex;align-items:flex-end;gap:7px;height:130px;}
+    .bw{flex:1;display:flex;flex-direction:column;align-items:center;gap:5px;}
+    .b{width:100%;border-radius:4px 4px 0 0;background:rgba(200,169,110,.12);position:relative;overflow:hidden;animation:growb .9s ease-out both;}
+    .b::after{content:'';position:absolute;inset:0;background:linear-gradient(180deg,var(--accent) 0%,rgba(200,169,110,.25) 100%);opacity:.65;}
+    @keyframes growb{from{transform:scaleY(0);transform-origin:bottom;}to{transform:scaleY(1);}}
+    .bm{font-size:.65rem;color:var(--muted);font-family:'DM Mono',monospace;}
+    .cleg{display:flex;gap:1rem;margin-top:1.2rem;padding-top:1rem;border-top:1px solid rgba(245,243,238,.06);}
+    .cleg-item{display:flex;align-items:center;gap:.4rem;font-size:.75rem;color:var(--muted);}
+    .cleg-dot{width:7px;height:7px;border-radius:50%;}
+    .fbadge{position:absolute;background:var(--ink2);border:1px solid rgba(200,169,110,.18);border-radius:var(--r-lg);padding:.75rem 1rem;font-size:.78rem;display:flex;align-items:center;gap:.5rem;animation:flt 3s ease-in-out infinite;white-space:nowrap;}
+    @keyframes flt{0%,100%{transform:translateY(0);}50%{transform:translateY(-6px);}}
+
+    /* Divider */
+    .div{height:1px;background:linear-gradient(90deg,transparent,rgba(200,169,110,.18),transparent);margin:0 3rem;}
+
+    /* Sections */
+    section{padding:7rem 3rem;}
+    .sec-eye{font-family:'DM Mono',monospace;font-size:.72rem;color:var(--accent);letter-spacing:.14em;text-transform:uppercase;margin-bottom:.7rem;}
+    .sec-ttl{font-family:'DM Serif Display',serif;font-size:clamp(2.2rem,4vw,3rem);line-height:1.1;letter-spacing:-.02em;}
+    .sec-ttl em{font-style:italic;color:rgba(245,243,238,.38);}
+    .sec-sub{font-size:.97rem;color:var(--muted);max-width:540px;margin-top:.7rem;line-height:1.7;}
+
+    /* About */
+    #about{background:var(--ink2);}
+    .about-grid{display:grid;grid-template-columns:1fr 1.6fr;gap:4rem;align-items:start;}
+    .about-l{position:sticky;top:110px;}
+    .portrait{width:100%;aspect-ratio:3/4;border-radius:var(--r-xl);background:var(--ink3);border:1px solid rgba(200,169,110,.09);overflow:hidden;position:relative;display:flex;align-items:center;justify-content:center;}
+    .portrait-mono{font-family:'DM Serif Display',serif;font-size:5.5rem;color:rgba(200,169,110,.15);}
+    .portrait-foot{position:absolute;bottom:0;left:0;right:0;padding:1.2rem;background:linear-gradient(transparent,rgba(13,13,15,.88));}
+    .portrait-name{font-family:'DM Serif Display',serif;font-size:1.2rem;}
+    .portrait-role{font-size:.78rem;color:var(--accent);margin-top:.2rem;}
+    .about-intro{font-size:1.15rem;line-height:1.8;color:rgba(245,243,238,.8);margin-bottom:1.8rem;font-weight:300;}
+    .about-intro strong{font-weight:600;color:var(--paper);}
+    .about-body{color:var(--muted);line-height:1.8;font-size:.95rem;margin-bottom:2rem;}
+    .about-body p{margin-bottom:.8rem;}
+    .tags{display:flex;flex-wrap:wrap;gap:.5rem;margin-top:1.4rem;}
+    .tag{font-family:'DM Mono',monospace;font-size:.72rem;letter-spacing:.05em;padding:.35rem .8rem;border-radius:999px;border:1px solid rgba(200,169,110,.22);color:rgba(245,243,238,.5);transition:border-color .2s,color .2s;cursor:default;}
+    .tag:hover{border-color:var(--accent);color:var(--accent);}
+
+    /* Skills */
+    #skills{background:var(--ink);}
+    .skills-g{display:grid;grid-template-columns:repeat(4,1fr);gap:1.1rem;margin-top:3.5rem;}
+    .sk-card{background:rgba(255,255,255,.025);border:1px solid rgba(245,243,238,.06);border-radius:var(--r-xl);padding:1.5rem;transition:border-color .3s,background .3s;position:relative;overflow:hidden;}
+    .sk-card:hover{border-color:rgba(200,169,110,.28);background:rgba(200,169,110,.03);}
+    .sk-card::before{content:'';position:absolute;top:0;left:0;right:0;height:1px;background:linear-gradient(90deg,transparent,var(--accent),transparent);opacity:0;transition:opacity .3s;}
+    .sk-card:hover::before{opacity:.35;}
+    .sk-ico{width:38px;height:38px;border-radius:var(--r-md);background:rgba(200,169,110,.09);display:flex;align-items:center;justify-content:center;color:var(--accent);font-size:.95rem;margin-bottom:.9rem;}
+    .sk-card h3{font-size:.88rem;font-weight:600;margin-bottom:.75rem;}
+    .sk-pills{display:flex;flex-wrap:wrap;gap:.35rem;}
+    .sk-pill{font-family:'DM Mono',monospace;font-size:.68rem;padding:.26rem .62rem;border-radius:999px;background:rgba(245,243,238,.05);color:rgba(245,243,238,.48);}
+
+    /* Projects */
+    #projects{background:var(--ink2);}
+    .proj-item{display:grid;grid-template-columns:1fr 1fr;gap:3.5rem;align-items:center;padding:3.5rem 0;border-bottom:1px solid rgba(245,243,238,.06);}
+    .proj-item:last-child{border-bottom:none;}
+    .proj-item.rev{direction:rtl;}
+    .proj-item.rev>*{direction:ltr;}
+    .proj-vis{border-radius:var(--r-xl);overflow:hidden;position:relative;background:var(--ink3);border:1px solid rgba(245,243,238,.06);aspect-ratio:16/10;}
+    .proj-vis img{width:100%;height:100%;object-fit:cover;display:block;transition:transform .5s ease;}
+    .proj-item:hover .proj-vis img{transform:scale(1.04);}
+    .proj-vis-ph{width:100%;height:100%;display:flex;align-items:center;justify-content:center;font-size:2.5rem;color:rgba(200,169,110,.18);}
+    .vov{position:absolute;inset:0;background:linear-gradient(to top,rgba(13,13,15,.65) 0%,transparent 55%);opacity:0;transition:opacity .3s;}
+    .proj-item:hover .vov{opacity:1;}
+    .vovc{position:absolute;bottom:1.1rem;left:1.1rem;display:flex;gap:.5rem;opacity:0;transform:translateY(6px);transition:opacity .3s,transform .3s;}
+    .proj-item:hover .vovc{opacity:1;transform:translateY(0);}
+    .ptype{font-family:'DM Mono',monospace;font-size:.7rem;letter-spacing:.12em;text-transform:uppercase;color:var(--accent);margin-bottom:.7rem;display:flex;align-items:center;gap:.5rem;}
+    .ptype::before{content:'';width:18px;height:1px;background:var(--accent);}
+    .ptitle{font-family:'DM Serif Display',serif;font-size:clamp(1.5rem,2.8vw,2rem);line-height:1.15;letter-spacing:-.02em;margin-bottom:.9rem;}
+    .pdesc{color:var(--muted);font-size:.91rem;line-height:1.75;margin-bottom:1.2rem;}
+    .pbullets{list-style:none;margin-bottom:1.4rem;}
+    .pbullets li{display:flex;align-items:baseline;gap:.55rem;font-size:.85rem;color:rgba(245,243,238,.58);margin-bottom:.45rem;line-height:1.6;}
+    .pbullets li::before{content:'→';color:var(--accent);font-size:.72rem;flex-shrink:0;}
+    .pstack{display:flex;flex-wrap:wrap;gap:.4rem;margin-bottom:1.4rem;}
+    .stag{font-family:'DM Mono',monospace;font-size:.7rem;padding:.28rem .65rem;border-radius:var(--r-md);background:rgba(44,95,138,.18);color:rgba(120,180,230,.75);border:1px solid rgba(44,95,138,.28);}
+    .plinks{display:flex;gap:.7rem;flex-wrap:wrap;}
+    .plink{display:inline-flex;align-items:center;gap:.42rem;font-size:.82rem;font-weight:500;text-decoration:none;padding:.6rem 1.1rem;border-radius:999px;transition:all .22s;}
+    .plink-p{background:var(--accent);color:var(--ink);}
+    .plink-p:hover{background:var(--accent2);transform:translateY(-1px);}
+    .plink-s{border:1px solid rgba(245,243,238,.18);color:var(--paper);}
+    .plink-s:hover{border-color:var(--accent);color:var(--accent);}
+    .pgal{display:grid;grid-template-columns:repeat(3,1fr);gap:.55rem;margin-top:1.3rem;}
+    .pgal img{width:100%;aspect-ratio:16/10;object-fit:cover;border-radius:var(--r-md);border:1px solid rgba(245,243,238,.06);cursor:zoom-in;transition:opacity .2s;}
+    .pgal img:hover{opacity:.78;}
+
+    /* Lightbox */
+    #lb{display:none;position:fixed;inset:0;z-index:9000;background:rgba(0,0,0,.93);align-items:center;justify-content:center;padding:2rem;}
+    #lb.open{display:flex;}
+    #lb img{max-width:90vw;max-height:85vh;border-radius:var(--r-lg);object-fit:contain;}
+    #lbx{position:fixed;top:1.4rem;right:1.4rem;width:40px;height:40px;border-radius:50%;background:rgba(255,255,255,.08);border:none;color:#fff;font-size:1.1rem;cursor:pointer;display:flex;align-items:center;justify-content:center;}
+
+    /* Contact */
+    #contact{background:var(--ink);display:grid;grid-template-columns:1fr 1fr;gap:5rem;align-items:center;min-height:55vh;}
+    .contact-ttl{font-family:'DM Serif Display',serif;font-size:clamp(2.5rem,5vw,3.8rem);line-height:1.08;letter-spacing:-.02em;margin-bottom:1rem;}
+    .contact-ttl em{font-style:italic;color:var(--accent);}
+    .contact-sub{color:var(--muted);font-size:.95rem;max-width:380px;line-height:1.75;}
+    .clinks{display:flex;flex-direction:column;gap:.9rem;}
+    .clink{display:flex;align-items:center;gap:1rem;padding:1.15rem 1.3rem;background:rgba(255,255,255,.025);border:1px solid rgba(245,243,238,.06);border-radius:var(--r-xl);text-decoration:none;color:var(--paper);transition:all .28s;}
+    .clink:hover{border-color:rgba(200,169,110,.28);background:rgba(200,169,110,.04);transform:translateX(4px);}
+    .clink-ico{width:44px;height:44px;flex-shrink:0;border-radius:var(--r-md);background:rgba(200,169,110,.09);display:flex;align-items:center;justify-content:center;color:var(--accent);font-size:.95rem;}
+    .clink-t{flex:1;}
+    .clink-lbl{font-size:.74rem;color:var(--muted);margin-bottom:.12rem;}
+    .clink-val{font-size:.92rem;font-weight:500;}
+    .clink-arr{color:var(--muted);transition:color .2s,transform .2s;font-size:.85rem;}
+    .clink:hover .clink-arr{color:var(--accent);transform:translateX(3px);}
+
+    /* Footer */
+    footer{background:var(--ink2);border-top:1px solid rgba(245,243,238,.05);padding:1.8rem 3rem;display:flex;align-items:center;justify-content:space-between;font-size:.78rem;color:var(--muted);}
+    .flogo{font-family:'DM Serif Display',serif;font-size:.95rem;color:var(--paper);}
+    .flogo span{color:var(--accent);}
+
+    /* Reveal */
+    .rv{opacity:0;transform:translateY(28px);transition:opacity .8s ease,transform .8s ease;}
+    .rv.on{opacity:1;transform:translateY(0);}
+    .d1{transition-delay:.1s;}.d2{transition-delay:.2s;}.d3{transition-delay:.3s;}
+
+    /* Responsive */
+    @media(max-width:1100px){
+      .skills-g{grid-template-columns:repeat(2,1fr);}
+      .proj-item{grid-template-columns:1fr;gap:2rem;}
+      .proj-item.rev{direction:ltr;}
+      #contact{grid-template-columns:1fr;gap:3rem;min-height:auto;padding:5rem 2rem;}
+    }
+    @media(max-width:860px){
+      #hero{grid-template-columns:1fr;padding:6rem 1.5rem 3rem;}
+      .hero-right{display:none;}
+      nav,nav.solid{padding:1rem 1.5rem;}
+      section{padding:5rem 1.5rem;}
+      .about-grid{grid-template-columns:1fr;}
+      .about-l{position:static;}
+      .portrait{aspect-ratio:2/1;}
+      footer{flex-direction:column;gap:.8rem;text-align:center;}
+      .div{margin:0 1.5rem;}
+    }
+    @media(max-width:560px){
+      .skills-g{grid-template-columns:1fr;}
+      .nav-links,.nav-cta{display:none;}
+      .hstats{flex-direction:column;gap:1.2rem;}
+    }
+  </style>
+</head>
+<body>
+
+<div class="cdot" id="cdot"></div>
+<div class="cring" id="cring"></div>
+<div id="sbar"></div>
+
+<!-- Lightbox -->
+<div id="lb">
+  <button id="lbx"><i class="fa fa-times"></i></button>
+  <img id="lbimg" src="" alt="" />
+</div>
+
+<!-- NAV -->
+<nav id="nav">
+  <a class="nav-logo" href="#hero">MK<span>.</span></a>
+  <ul class="nav-links">
+    <li><a href="#about">Profil</a></li>
+    <li><a href="#skills">Compétences</a></li>
+    <li><a href="#projects">Projets</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ul>
+  <a href="/cdn-cgi/l/email-protection#acc1c3d9c2cdc7c4c3c0cddfdfc5eccbc1cdc5c082cfc3c1" class="nav-cta"><i class="fa fa-paper-plane"></i> Me contacter</a>
+</nav>
+
+<!-- HERO -->
+<section id="hero">
+  <div class="hero-grid-bg"></div>
+  <div class="hero-glow"></div>
+
+  <div class="hero-left">
+    <div class="eyebrow">Disponible — Paris, France</div>
+    <h1 class="hero-h1">Mouna<br><em>Kholassi</em></h1>
+    <p class="hero-tag">
+      <strong>Data Analyst · Business &amp; Product mindset</strong><br>
+      Spécialisée en analyse de données, pilotage de performance et prise de décision data-driven.
+    </p>
+    <div class="ctas">
+      <a href="#projects" class="btn-p"><i class="fa fa-chart-bar"></i> Voir les projets</a>
+      <a href="#contact" class="btn-g"><i class="fa fa-envelope"></i> Me contacter</a>
+    </div>
+    <div class="hstats">
+      <div><span class="hstat-num">2+</span><span class="hstat-lbl">Ans d'expérience</span></div>
+      <div><span class="hstat-num">20K+</span><span class="hstat-lbl">Interactions analysées</span></div>
+      <div><span class="hstat-num">5+</span><span class="hstat-lbl">Projets data</span></div>
+    </div>
+  </div>
+
+  <div class="hero-right">
+    <div style="position:relative;">
+      <div class="fbadge" style="top:-18px;right:-18px;animation-delay:.4s;">
+        <span style="font-size:1rem;">📊</span>
+        <div><div style="font-size:.68rem;color:var(--muted);">Taux d'ouverture</div><div style="font-size:.88rem;font-weight:600;">+34 % vs N-1</div></div>
+      </div>
+      <div class="fbadge" style="bottom:-14px;left:-14px;animation-delay:1.1s;">
+        <span style="font-size:1rem;">🧠</span>
+        <div><div style="font-size:.68rem;color:var(--muted);">Précision CNN</div><div style="font-size:.88rem;font-weight:600;">94.2 %</div></div>
+      </div>
+      <div class="chart-card">
+        <div class="card-lbl">Performance omnicanale · 2024</div>
+        <div class="bars">
+          <div class="bw"><div class="b" style="height:52%;animation-delay:.08s;"></div><span class="bm">Jan</span></div>
+          <div class="bw"><div class="b" style="height:63%;animation-delay:.13s;"></div><span class="bm">Fév</span></div>
+          <div class="bw"><div class="b" style="height:47%;animation-delay:.18s;"></div><span class="bm">Mar</span></div>
+          <div class="bw"><div class="b" style="height:70%;animation-delay:.23s;"></div><span class="bm">Avr</span></div>
+          <div class="bw"><div class="b" style="height:78%;animation-delay:.28s;"></div><span class="bm">Mai</span></div>
+          <div class="bw"><div class="b" style="height:66%;animation-delay:.33s;"></div><span class="bm">Jun</span></div>
+          <div class="bw"><div class="b" style="height:85%;animation-delay:.38s;"></div><span class="bm">Jul</span></div>
+          <div class="bw"><div class="b" style="height:93%;animation-delay:.43s;"></div><span class="bm">Aoû</span></div>
+          <div class="bw"><div class="b" style="height:74%;animation-delay:.48s;"></div><span class="bm">Sep</span></div>
+          <div class="bw"><div class="b" style="height:100%;animation-delay:.53s;"></div><span class="bm">Oct</span></div>
+          <div class="bw"><div class="b" style="height:89%;animation-delay:.58s;"></div><span class="bm">Nov</span></div>
+          <div class="bw"><div class="b" style="height:82%;animation-delay:.63s;"></div><span class="bm">Déc</span></div>
+        </div>
+        <div class="cleg">
+          <div class="cleg-item"><div class="cleg-dot" style="background:var(--accent);"></div>Engagement client</div>
+          <div class="cleg-item" style="margin-left:auto;font-family:'DM Mono',monospace;font-size:.7rem;color:var(--accent);">↑ 34 % vs N-1</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="div"></div>
+
+<!-- ABOUT -->
+<section id="about">
+  <div class="about-grid">
+    <div class="about-l rv">
+      <div class="portrait">
+        <div class="portrait-mono">MK</div>
+        <div class="portrait-foot">
+          <div class="portrait-name">Mouna Kholassi</div>
+          <div class="portrait-role">Data Analyst · Paris</div>
+        </div>
+      </div>
+    </div>
+    <div>
+      <div style="margin-bottom:3rem;" class="rv">
+        <div class="sec-eye">Profil</div>
+        <h2 class="sec-ttl">Une data analyst <em>orientée résultats</em></h2>
+      </div>
+      <p class="about-intro rv d1">
+        Expérience récente en environnement pharma sur des projets data et omnicanaux. Je transforme des données complexes en <strong>décisions business actionnables</strong>, avec une double vision métier et technique.
+      </p>
+      <div class="about-body rv d2">
+        <p>J'ai travaillé sur l'analyse de campagnes digitales, la segmentation d'audiences, l'exploitation de données CRM et la création de dashboards pour piloter la performance et orienter les décisions business.</p>
+        <p>Ma double formation en <strong style="color:var(--paper);">Data Analytics</strong> et <strong style="color:var(--paper);">Big Data & IA</strong> me permet d'allier vision métier et compétences techniques en SQL, Python, Power BI et Tableau.</p>
+      </div>
+      <div class="tags rv d3">
+        <span class="tag">SQL</span><span class="tag">Python</span><span class="tag">Power BI</span>
+        <span class="tag">Tableau</span><span class="tag">Salesforce</span><span class="tag">Veeva CRM</span>
+        <span class="tag">Machine Learning</span><span class="tag">DAX</span><span class="tag">Pandas</span>
+        <span class="tag">Scikit-learn</span><span class="tag">Omnicanal</span><span class="tag">KPI & Reporting</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="div"></div>
+
+<!-- SKILLS -->
+<section id="skills">
+  <div class="rv">
+    <div class="sec-eye">Compétences</div>
+    <h2 class="sec-ttl">Stack technique <em>&amp; métier</em></h2>
+    <p class="sec-sub">Un socle mêlant analyse, visualisation, CRM et compréhension métier pour transformer la donnée en décision.</p>
+  </div>
+  <div class="skills-g">
+    <div class="sk-card rv d1">
+      <div class="sk-ico"><i class="fa fa-chart-line"></i></div>
+      <h3>Business Intelligence</h3>
+      <div class="sk-pills"><span class="sk-pill">Power BI</span><span class="sk-pill">Tableau</span><span class="sk-pill">DAX</span><span class="sk-pill">Excel avancé</span></div>
+    </div>
+    <div class="sk-card rv d2">
+      <div class="sk-ico"><i class="fa fa-code"></i></div>
+      <h3>Data Analysis</h3>
+      <div class="sk-pills"><span class="sk-pill">Python</span><span class="sk-pill">SQL</span><span class="sk-pill">Pandas</span><span class="sk-pill">PySpark</span><span class="sk-pill">Data cleaning</span></div>
+    </div>
+    <div class="sk-card rv d3">
+      <div class="sk-ico"><i class="fa fa-users"></i></div>
+      <h3>CRM & Digital</h3>
+      <div class="sk-pills"><span class="sk-pill">Salesforce</span><span class="sk-pill">Veeva CRM</span><span class="sk-pill">Qualtrics</span><span class="sk-pill">Shopify</span></div>
+    </div>
+    <div class="sk-card rv" style="transition-delay:.4s;">
+      <div class="sk-ico"><i class="fa fa-brain"></i></div>
+      <h3>Machine Learning</h3>
+      <div class="sk-pills"><span class="sk-pill">Scikit-learn</span><span class="sk-pill">TensorFlow</span><span class="sk-pill">OpenCV</span><span class="sk-pill">CNN</span><span class="sk-pill">Streamlit</span></div>
+    </div>
+  </div>
+</section>
+
+<div class="div"></div>
+
+<!-- PROJECTS -->
+<section id="projects">
+  <div class="rv" style="margin-bottom:3.5rem;">
+    <div class="sec-eye">Projets</div>
+    <h2 class="sec-ttl">Travaux <em>sélectionnés</em></h2>
+    <p class="sec-sub">Analyse, visualisation, machine learning et pilotage de performance.</p>
+  </div>
+
+  <!-- P1 Boehringer -->
+  <div class="proj-item rv">
+    <div class="proj-vis">
+      <img src="assets/boehringer_page_acceuil.png" alt="Portail Power BI"
+           onerror="this.style.display='none';this.nextElementSibling.style.display='flex';" />
+      <div class="proj-vis-ph" style="display:none;"><i class="fa fa-chart-bar"></i></div>
+      <div class="vov"><div class="vovc">
+        <a href="#contact" class="plink plink-p" style="font-size:.78rem;padding:.48rem .95rem;"><i class="fa fa-lock"></i> Démo sur demande</a>
+      </div></div>
+    </div>
+    <div>
+      <div class="ptype">Projet professionnel</div>
+      <h3 class="ptitle">Portail Data CX &amp; Terrain</h3>
+      <p class="pdesc">Conception d'un portail décisionnel Power BI pour piloter la performance des campagnes omnicanales et optimiser l'engagement client.</p>
+      <ul class="pbullets">
+        <li>Navigation dédiée : univers CX et univers Terrain</li>
+        <li>Dashboards envois, ouvertures, clics, réactivité, benchmark annuel</li>
+        <li>Filtres avancés par spécialité, produit, région et réseau</li>
+        <li>Détection d'axes d'optimisation contenus &amp; ciblage</li>
+        <li>Vision 360° pour le pilotage opérationnel et marketing</li>
+      </ul>
+      <div class="pstack">
+        <span class="stag">Power BI</span><span class="stag">Salesforce</span>
+        <span class="stag">Veeva CRM</span><span class="stag">DAX</span><span class="stag">Excel</span>
+      </div>
+      <div class="plinks"><a href="#contact" class="plink plink-p"><i class="fa fa-lock"></i> Démo sur demande</a></div>
+      <div class="pgal">
+        <img src="assets/boehringer_page_acceuil.png" alt="Accueil portail" />
+        <img src="assets/boehringer_page_cx_menu.png" alt="Menu CX" />
+        <img src="assets/boehringer_page_terrain_menu.png" alt="Menu Terrain" />
+        <img src="assets/boehringer_touchs_perf_globales.png" alt="Perf globales" />
+        <img src="assets/boehringer_comparateur_de_regions.png" alt="Comparateur régions" />
+        <img src="assets/boehringer_evolution_taux.png" alt="Évolution taux" />
+        <img src="assets/boehringer_benchmark_25_26.png" alt="Benchmark" />
+        <img src="assets/boehringer_touchs_terrain.png" alt="Terrain" />
+        <img src="assets/boehringer_touchs_terrain_2.png" alt="Terrain 2" />
+      </div>
+    </div>
+  </div>
+
+  <!-- P2 Pneumon-IA -->
+  <div class="proj-item rev rv">
+    <div class="proj-vis">
+      <img src="assets/page_acceuil.png" alt="Pneumon-IA"
+           onerror="this.style.display='none';this.nextElementSibling.style.display='flex';" />
+      <div class="proj-vis-ph" style="display:none;"><i class="fa fa-brain"></i></div>
+      <div class="vov"><div class="vovc">
+        <a href="https://github.com/Mouna-kenza" target="_blank" class="plink plink-p" style="font-size:.78rem;padding:.48rem .95rem;"><i class="fab fa-github"></i> GitHub</a>
+      </div></div>
+    </div>
+    <div>
+      <div class="ptype">Projet IA / Deep Learning</div>
+      <h3 class="ptitle">Pneumon-IA</h3>
+      <p class="pdesc">Application de détection de pneumonie à partir de radiographies pulmonaires, avec comparaison de modèles ML et interface Streamlit.</p>
+      <ul class="pbullets">
+        <li>Pipeline complet : collecte, nettoyage, redimensionnement</li>
+        <li>Comparaison CNN, KNN, LDA, Bayes, arbre de décision</li>
+        <li>CNN le plus performant — précision 94.2 %</li>
+        <li>Interface Streamlit pour charger une image et prédire</li>
+      </ul>
+      <div class="pstack">
+        <span class="stag">Python</span><span class="stag">TensorFlow</span>
+        <span class="stag">Scikit-learn</span><span class="stag">OpenCV</span><span class="stag">Streamlit</span>
+      </div>
+      <div class="plinks"><a href="https://github.com/Mouna-kenza" target="_blank" class="plink plink-p"><i class="fab fa-github"></i> Voir GitHub</a></div>
+      <div class="pgal">
+        <img src="assets/page_acceuil.png" alt="Accueil" />
+        <img src="assets/choix_du_modele.png" alt="Choix modèle" />
+        <img src="assets/detection_pneumonie.png" alt="Détection" />
+        <img src="assets/page_2.png" alt="Page 2" />
+        <img src="assets/page_3.png" alt="Page 3" />
+        <img src="assets/page_4.png" alt="Page 4" />
+      </div>
+    </div>
+  </div>
+
+  <!-- P3 SOGOOD -->
+  <div class="proj-item rv">
+    <div class="proj-vis">
+      <img src="assets/analyse_nutritionnelle.jpeg" alt="SOGOOD nutrition" />
+      <div class="vov"><div class="vovc">
+        <a href="https://github.com/Mouna-kenza/sogood-nutritional-analysis" target="_blank" class="plink plink-p" style="font-size:.78rem;padding:.48rem .95rem;"><i class="fab fa-github"></i> GitHub</a>
+      </div></div>
+    </div>
+    <div>
+      <div class="ptype">Projet Big Data</div>
+      <h3 class="ptitle">SOGOOD — Analyse nutritionnelle</h3>
+      <p class="pdesc">Analyse de données nutritionnelles à grande échelle pour identifier des patterns et restituer les résultats via des dashboards décisionnels.</p>
+      <ul class="pbullets">
+        <li>Traitement d'un volume important de données produits</li>
+        <li>Indicateurs et visualisations pour la qualité nutritionnelle</li>
+        <li>Interface de restitution facilitant l'exploration des insights</li>
+      </ul>
+      <div class="pstack">
+        <span class="stag">PySpark</span><span class="stag">Power BI</span>
+        <span class="stag">PostgreSQL</span><span class="stag">Scikit-learn</span>
+      </div>
+      <div class="plinks">
+        <a href="https://github.com/Mouna-kenza/sogood-nutritional-analysis" target="_blank" class="plink plink-p"><i class="fab fa-github"></i> Voir GitHub</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="div"></div>
+
+<!-- CONTACT -->
+<section id="contact">
+  <div class="rv">
+    <div class="sec-eye">Contact</div>
+    <h2 class="contact-ttl">Travaillons<br><em>ensemble</em></h2>
+    <p class="contact-sub">Disponible pour des opportunités en data, business analysis, CRM et BI.</p>
+  </div>
+  <div class="clinks rv d2">
+    <a href="/cdn-cgi/l/email-protection#ea87859f848b818285868b999983aa8d878b8386c4898587" class="clink">
+      <div class="clink-ico"><i class="fa fa-envelope"></i></div>
+      <div class="clink-t"><div class="clink-lbl">Email</div><div class="clink-val"><span class="__cf_email__" data-cfemail="96fbf9e3f8f7fdfef9faf7e5e5ffd6f1fbf7fffab8f5f9fb">[email&#160;protected]</span></div></div>
+      <i class="fa fa-arrow-right clink-arr"></i>
+    </a>
+    <a href="https://www.linkedin.com/in/mouna-kholassi" target="_blank" class="clink">
+      <div class="clink-ico"><i class="fab fa-linkedin-in"></i></div>
+      <div class="clink-t"><div class="clink-lbl">LinkedIn</div><div class="clink-val">mouna-kholassi</div></div>
+      <i class="fa fa-arrow-right clink-arr"></i>
+    </a>
+    <a href="https://github.com/Mouna-kenza" target="_blank" class="clink">
+      <div class="clink-ico"><i class="fab fa-github"></i></div>
+      <div class="clink-t"><div class="clink-lbl">GitHub</div><div class="clink-val">Mouna-kenza</div></div>
+      <i class="fa fa-arrow-right clink-arr"></i>
+    </a>
+    <div class="clink" style="cursor:default;">
+      <div class="clink-ico"><i class="fa fa-map-marker-alt"></i></div>
+      <div class="clink-t"><div class="clink-lbl">Localisation</div><div class="clink-val">Paris, France</div></div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="flogo">MK<span>.</span></div>
+  <span>© 2024 Mouna Kholassi — Data Analyst</span>
+  <span>Paris, France</span>
+</footer>
+
+<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
+  /* Cursor */
+  const cdot=document.getElementById('cdot'),cring=document.getElementById('cring');
+  let mx=0,my=0,rx=0,ry=0;
+  document.addEventListener('mousemove',e=>{
+    mx=e.clientX;my=e.clientY;
+    cdot.style.transform=`translate(${mx-3}px,${my-3}px)`;
+  });
+  (function ar(){rx+=(mx-rx-17)*.13;ry+=(my-ry-17)*.13;cring.style.transform=`translate(${rx}px,${ry}px)`;requestAnimationFrame(ar);})();
+
+  /* Scroll */
+  const nav=document.getElementById('nav'),sb=document.getElementById('sbar');
+  window.addEventListener('scroll',()=>{
+    const s=window.scrollY,max=document.documentElement.scrollHeight-window.innerHeight;
+    sb.style.width=(s/max*100)+'%';
+    nav.classList.toggle('solid',s>60);
+  });
+
+  /* Smooth nav */
+  document.querySelectorAll('a[href^="#"]').forEach(a=>{
+    a.addEventListener('click',e=>{
+      const t=document.querySelector(a.getAttribute('href'));
+      if(t){e.preventDefault();t.scrollIntoView({behavior:'smooth',block:'start'});}
+    });
+  });
+
+  /* Reveal */
+  const obs=new IntersectionObserver(es=>{es.forEach(e=>{if(e.isIntersecting)e.target.classList.add('on');});},{threshold:.1,rootMargin:'0px 0px -40px 0px'});
+  document.querySelectorAll('.rv').forEach(el=>obs.observe(el));
+
+  /* Lightbox */
+  const lb=document.getElementById('lb'),lbimg=document.getElementById('lbimg');
+  document.querySelectorAll('.pgal img').forEach(img=>{
+    img.addEventListener('click',()=>{lbimg.src=img.src;lb.classList.add('open');document.body.style.overflow='hidden';});
+  });
+  function closeLb(){
