@@ -452,7 +452,9 @@
   <!-- P3 SOGOOD -->
   <div class="proj-item rv">
     <div class="proj-vis">
-      <img src="analyse_nutritionnelle.jpeg" alt="SOGOOD nutrition" />
+      <img src="Vue_d_ensemble.png" alt="SOGOOD — Vue d'ensemble"
+           onerror="this.style.display='none';this.nextElementSibling.style.display='flex';" />
+      <div class="proj-vis-ph" style="display:none;"><i class="fa fa-leaf"></i></div>
       <div class="vov"><div class="vovc">
         <a href="https://github.com/Mouna-kenza/sogood-nutritional-analysis" target="_blank" class="plink plink-p" style="font-size:.78rem;padding:.48rem .95rem;"><i class="fab fa-github"></i> GitHub</a>
       </div></div>
@@ -460,11 +462,13 @@
     <div>
       <div class="ptype">Projet Big Data</div>
       <h3 class="ptitle">SOGOOD — Analyse nutritionnelle</h3>
-      <p class="pdesc">Analyse de données nutritionnelles à grande échelle pour identifier des patterns et restituer les résultats via des dashboards décisionnels.</p>
+      <p class="pdesc">Analyse de 500K produits alimentaires à grande échelle pour identifier des patterns nutritionnels et restituer les résultats via des dashboards Power BI décisionnels.</p>
       <ul class="pbullets">
-        <li>Traitement d'un volume important de données produits</li>
-        <li>Indicateurs et visualisations pour la qualité nutritionnelle</li>
-        <li>Interface de restitution facilitant l'exploration des insights</li>
+        <li>500K produits analysés — Score Qualité Global : 1,79/5</li>
+        <li>Distribution des Nutri-Scores et groupes NOVA (transformation)</li>
+        <li>Identification des marques à risque et produits ultra-transformés (73,43%)</li>
+        <li>Détection de 400K produits critiques (trop salés ou trop sucrés)</li>
+        <li>Analyse géographique par pays avec classement qualité</li>
       </ul>
       <div class="pstack">
         <span class="stag">PySpark</span><span class="stag">Power BI</span>
@@ -472,6 +476,12 @@
       </div>
       <div class="plinks">
         <a href="https://github.com/Mouna-kenza/sogood-nutritional-analysis" target="_blank" class="plink plink-p"><i class="fab fa-github"></i> Voir GitHub</a>
+      </div>
+      <div class="pgal">
+        <img src="Vue_d_ensemble.png" alt="Vue d'ensemble" />
+        <img src="Analyse_par_pays.png" alt="Analyse par pays" />
+        <img src="Marques_controversées.png" alt="Marques controversées" />
+        <img src="Seuils_nutri_critiques.png" alt="Seuils nutritionnels critiques" />
       </div>
     </div>
   </div>
@@ -487,9 +497,9 @@
     <p class="contact-sub">Disponible pour des opportunités en data, business analysis, CRM et BI.</p>
   </div>
   <div class="clinks rv d2">
-    <a href="/cdn-cgi/l/email-protection#ea87859f848b818285868b999983aa8d878b8386c4898587" class="clink">
+    <a href="#" id="email-link" class="clink" onclick="var e='mounakholassi'+'@'+'gmail.com';window.location='mailto:'+e;return false;">
       <div class="clink-ico"><i class="fa fa-envelope"></i></div>
-      <div class="clink-t"><div class="clink-lbl">Email</div><div class="clink-val"><span class="__cf_email__" data-cfemail="96fbf9e3f8f7fdfef9faf7e5e5ffd6f1fbf7fffab8f5f9fb">[email&#160;protected]</span></div></div>
+      <div class="clink-t"><div class="clink-lbl">Email</div><div class="clink-val" id="eml"></div></div>
       <i class="fa fa-arrow-right clink-arr"></i>
     </a>
     <a href="https://www.linkedin.com/in/mouna-kholassi" target="_blank" class="clink">
